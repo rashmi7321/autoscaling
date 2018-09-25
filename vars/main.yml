@@ -1,0 +1,25 @@
+---
+# vars file for autoelk
+sec_group_rules: 
+- proto: tcp
+  from_port: 80
+  to_port: 80
+  cidr_ip: 0.0.0.0/0
+- proto: tcp
+  from_port: 22
+  to_port: 22
+  cidr_ip: 0.0.0.0/0
+  group_name: "{{ app_name }}"
+region: us-east-1
+app_name: autoscaling
+subnets:
+- subnet-ffbd3ca3
+app_security_group.group_id: sg-2dfec561
+vpc_id: vpc-00b8687a
+ami: xxxxxxxx
+max_size: 3
+min_size: 2
+termination_policies: NewestInstance
+desired_capacity: 2
+key_name: xxxxxx
+instance_size: t2.micro
